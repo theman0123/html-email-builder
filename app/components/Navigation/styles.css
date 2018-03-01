@@ -1,0 +1,23 @@
+.navContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: coral;
+  width: 100vw;
+  height: 50px;
+  padding: 5px
+}
+
+.homeLink {
+  font-weight: 700;
+  font-size: 20px;
+  opacity: 100;
+}
+
+.homeLinkContainer {
+  border-left: solid blue;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
