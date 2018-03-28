@@ -3,8 +3,6 @@
 //set up permissions for authedUser
 //set up api file for google contacts login/auth
 
-//USER.reducer
-
 //import auth, { logout, saveUser } from 'helpers/auth'
 //import { formatUserInfo } from 'helpers/utils'
 //import { fetchUser } from 'helpers/api'

@@ -2,7 +2,7 @@
 
 export type actionType = {|
   +type: string,
-  +error: string,
+  error?: string,
   +importedContacts?: mixed,
   +user?: string,
   +uid?: string
