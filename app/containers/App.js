@@ -13,7 +13,7 @@ export default class App extends React.Component<Props> {
     return (
       <div>
         <Navigation />
-    
+
         <div>{this.props.children}</div>
       </div>
     );

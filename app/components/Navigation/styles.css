@@ -3,7 +3,7 @@
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
-  background-color: coral;
+  background-color: #74E192;
   width: 100vw;
   height: 50px;
   padding: 5px
@@ -16,8 +16,25 @@
 }
 
 .homeLinkContainer {
-  border-left: solid blue;
+  border-bottom: .1em double white;
   height: 100%;
   display: flex;
   align-items: center;
+}
+
+.mainMenu {
+  width: 10vw;
+  padding-top: 2em;
+  padding-left: 1em;
+  background-color: #FA6FD0;
+}
+
+.itemList {
+  font-size: 1.75em;
+}
+
+.header {
+  font-size: 2em;
+  margin-bottom: 2em;
+  text-align: center;
 }

@@ -1,7 +1,7 @@
 // @flow
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import styles from './styles.css';
+import IconGoogle from '../../assets/icon-google.js'
 
 type Props = {};
 
@@ -11,9 +11,8 @@ export default class Home extends Component<Props> {
   render() {
     return (
       <div>
-        <div className={styles.container} data-tid="container">
-          <div className={styles.btn}>Login with Google</div>
-          <Link to='/landing'>{'Landing'}</Link>
+        <div className={styles.mdText}>
+          {'Hi.'}
         </div>
       </div>
     );

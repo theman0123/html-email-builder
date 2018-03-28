@@ -1,20 +1,23 @@
 // @flow
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { navContainer, homeLink, homeLinkContainer } from './styles.css';
+import * as styles from './styles.css';
+import { slide as Menu } from 'react-burger-menu'
 
 type Props = {};
 
-export default class Home extends Component<Props> {
-  props: Props;
+export default class Navigation extends React.Component {
+  showSettings (event) {
+    event.preventDefault();
+  }
 
-  render() {
+  render () {
     return (
-      <div className={navContainer}>
-        <div className={homeLinkContainer}>
-          <Link className={homeLink} to='/'>{'Home'}</Link>
-        </div>
-      </div>
+      <Menu className={styles.mainMenu} itemListClassName={styles.itemList} right noOverlay >
+        <div className={styles.header}>{'Select an App'}</div>
+        <Link to="/build-invoices">Build Invoices</Link>
+        <a onClick={ this.showSettings } className="menu-item--small" href="">Settings</a>
+      </Menu>
     );
   }
 }

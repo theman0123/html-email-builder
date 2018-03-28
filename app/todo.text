@@ -1,0 +1,28 @@
+sketch the user experience...
+FINISHED
+0. finish redux schema--use immutable js
+1. tested USER ACTIONS AND USER REDUCER; CONTACTS ACTIONS AND REDUCER;-- add flow to redux then add immutable
+2. 
+
+
+
+NEXT
+--go read about 2 package.json and where to install dependencies. install dependencies 'fetch-mock' 'redux-mock-store' if needed...
+
+
+a. write tests as you split off actions and reducers into their own files. -- in user
+
+
+
+1. Start writing the tests, which can be broken down into:
+-Action Tests
+-Reducer Tests
+-Middleware Tests
+-Component Tests
+
+2. UI for oAuth 2.0 google contacts // or error
+3. UI and redux for contacts (including drag and drop)
+4. UI and redux for invoice editor
+5. connect redux to python3
+6. send email with python3
+7. show confirmation of email sent //or error 
