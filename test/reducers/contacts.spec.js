@@ -25,10 +25,11 @@ describe('contacts reducer:', () => {
           name: 'cornflower',
         }
       });
-    expect(contacts(undefined, actions.fetchingContactsSuccess(fakeContacts))).toEqual(Map({
-        isFetching: false,
-        error: '',
-      }).merge(fakeContacts));
+    expect(contacts(undefined, actions.fetchingContactsSuccess(fakeContacts)))
+        .toEqual(Map({
+          isFetching: false,
+          error: '',
+        }).merge(fakeContacts));
     });
     it('handles a failure', () => {
       const err = 'Error Fetching Contacts';
