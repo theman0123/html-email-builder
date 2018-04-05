@@ -5,9 +5,9 @@ import { Map } from 'immutable';
 
 type userStateType = {
   +isFetching: boolean,
-  +error: string,
-  +isAuthed: boolean,
-  +authedId: string
+  +error?: string,
+  +isAuthed?: boolean,
+  +authedId?: string
 };
 
 type manageUserType = {
