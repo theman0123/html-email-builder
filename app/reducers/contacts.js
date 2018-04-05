@@ -25,7 +25,7 @@ export default function contacts(state: contactStateType = initialState, action:
         isFetching: false,
       });
     case FETCHING_CONTACTS_SUCCESS:
-      return state.merge(Map({ isFetching: false }))
+      return state.merge({ isFetching: false })
         .merge(action.importedContacts);
     case REMOVE_FETCHING_CONTACTS:
       return state.merge({

@@ -1,6 +1,6 @@
+import { Map } from 'immutable';
 import user from '../../app/reducers/user';
 import * as actions from '../../app/actions/user';
-import { Map } from 'immutable';
 
 describe('user reducer', () => {
   describe('should auth user', () => {

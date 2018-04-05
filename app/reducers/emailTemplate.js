@@ -1,37 +1,54 @@
+import { Map } from 'immutable';
+import { ADD_RECIPIENTS, CONFIRM_AND_LOCK, INVOICE_ID, SUBJECT } from '../../app/actions/emailTemplate';
 
-const initialState = {
+// const initialInvoice = {
+//  amount: 0,
+//  invoiceId: null,
+//  confirmed: false,
+// }
+
+// 12345(objectId/invoiceId):{
+//     amount(inputType): 150.00,
+//     id(objectId/invoiceId): 12345,
+//     confirmed(confirmAndLock()): true,
+//  }
+// const manageInvoice = (state = initialInvoice, action) => {
+//  switch(inputType) {
+//    case INVOICE_ID:
+//      return state.merge({
+//        invoiceId: action.invoiceId
+//      })
+//    default:
+//      return state;
+//  };
+// };
+
+const initialState = Map({
   from: '',
   recipients: [],
   subject: '',
-  invoices: {},
-}
+  invoices: Map({}),
+});
 
-export default function defaultTemplate (state = initialState, action) {
-  switch(action.inputType) {
-    case INVOICE_ID :
-      return {
-        ...state,
-        invoices[action.objectId]: {invoiceId: action.payload},//I will generate objectId when user adds invoice
-      }
-    case SUBJECT :
-      return {
-        ...state,
-        subject: action.payload,//autofill but available to change... i.e. 'invoice: urgent' or 'new invoice for ..'
-      }
-    case RECIPIENTS ://drag and drop
-      return update(recipients, {$push: [action.payload]}),
-    case AMOUNT :
-      return {
-        ...state,
-        invoices[action.objectId].amount: action.payload),
-      }
-    case CONFIRM_AND_LOCK :
-      return {
-        ...state,
-        invoices[action.objectId].confirmed: action.payload),//bool
-      }
-    default :
-      return state
+export default function emailTemplate(state = initialState, action) {
+  switch (action.inputType) {
+    case INVOICE_ID:
+      return state.setIn(['invoices', action.invoiceId, 'invoiceId'], action.payload);
+    case SUBJECT:
+      return state.merge({ subject: action.payload });
+    case RECIPIENTS://drag and drop
+      return state;//update(recipients, {$push: [action.payload]}),
+//    case AMOUNT:
+//      return {
+//        ...state,
+//        invoices[action.objectId].amount: action.payload),
+//      }
+//    case CONFIRM_AND_LOCK:
+//      return {
+//        ...state,
+//        invoices[action.objectId].confirmed: action.payload),//bool
+//      }
+    default:
+      return state;
   }
 }
-

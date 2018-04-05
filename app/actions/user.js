@@ -1,11 +1,11 @@
 // @flow
 
-//set up permissions for authedUser
-//set up api file for google contacts login/auth
-
-//import auth, { logout, saveUser } from 'helpers/auth'
-//import { formatUserInfo } from 'helpers/utils'
-//import { fetchUser } from 'helpers/api'
+// set up permissions for authedUser
+// set up api file for google contacts login/auth
+// user should have email address on userObject
+// import auth, { logout, saveUser } from 'helpers/auth'
+// import { formatUserInfo } from 'helpers/utils'
+// import { fetchUser } from 'helpers/api'
 
 export const AUTH_USER = 'AUTH_USER';
 export const UNAUTH_USER = 'UNAUTH_USER';
