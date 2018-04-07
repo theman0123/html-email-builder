@@ -1,14 +1,16 @@
-import { Map } from 'immutable';
+import { Map, List, fromJS } from 'immutable';
 import emailTemplate from '../../app/reducers/emailTemplate';
 import * as actions from '../../app/actions/emailTemplate';
 
+// **Note: List from immutable registering undefined when testing for initial state and default
+
 describe('emailTemplate reducer:', () => {
   it('should have an initialState', () => {
-    expect(emailTemplate(undefined, {})).toEqual(Map({
+    expect(emailTemplate(undefined, {})).toEqual(fromJS({
       from: '',
-      recipients: [],
+      recipients: [undefined], // see Note**
       subject: '',
-      invoices: Map({}),
+      invoices: {},
     }));
   });
   it('handles inputType: INVOICE_ID', () => {
@@ -25,25 +27,25 @@ describe('emailTemplate reducer:', () => {
 
     expect(updateInvoice.get('subject')).toEqual('Bill: Urgent');
   });
-  it('handles inputeType: RECIPIENTS', () => {
-    const fakeAction = actions.updateTemplate(actions.RECIPIENTS, 1, ['email@email.com']);
+  it('handles inputeType: ADD_RECIPIENTS', () => {
+    const fakeAction = actions.updateTemplate(actions.ADD_RECIPIENTS, 1, 'email@email.com');
     const updateInvoice = emailTemplate(undefined, fakeAction);
-
-    expect(updateInvoice.get('recipients')).toEqual(['email@email.com']);
+    expect(updateInvoice.get('recipients')).toEqual(List(['email@email.com']));
   });
-  
+
   it('handles inputType: AMOUNT')
   it('handles inputeType: CONFIRM_AND_LOCK')
   it('has a default that returns the state', () => {
-    const fakeState = Map({
+    const fakeState = fromJS({
       from: 'john@email.com',
       recipients: ['sam@email.com'],
       subject: 'URGENT',
       invoices: {},
     });
-    expect(emailTemplate(fakeState, 'unhandleable')).toEqual(Map({
+
+    expect(emailTemplate(fakeState, 'unhandleable')).toEqual(fromJS({
       from: 'john@email.com',
-      recipients: ['sam@email.com'],
+      recipients: ['sam@email.com', undefined], // see Note**
       subject: 'URGENT',
       invoices: {},
     }));

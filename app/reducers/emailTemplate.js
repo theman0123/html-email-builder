@@ -1,4 +1,4 @@
-import { Map } from 'immutable';
+import { Map, List, fromJS } from 'immutable';
 import { ADD_RECIPIENTS, CONFIRM_AND_LOCK, INVOICE_ID, SUBJECT } from '../../app/actions/emailTemplate';
 
 // const initialInvoice = {
@@ -23,11 +23,11 @@ import { ADD_RECIPIENTS, CONFIRM_AND_LOCK, INVOICE_ID, SUBJECT } from '../../app
 //  };
 // };
 
-const initialState = Map({
+const initialState = fromJS({
   from: '',
   recipients: [],
   subject: '',
-  invoices: Map({}),
+  invoices: {},
 });
 
 export default function emailTemplate(state = initialState, action) {
@@ -36,8 +36,13 @@ export default function emailTemplate(state = initialState, action) {
       return state.setIn(['invoices', action.invoiceId, 'invoiceId'], action.payload);
     case SUBJECT:
       return state.merge({ subject: action.payload });
-    case RECIPIENTS://drag and drop
-      return state;//update(recipients, {$push: [action.payload]}),
+    case ADD_RECIPIENTS:
+      return state.merge({
+        recipients: state.get('recipients').push(action.payload)
+      });
+//      return state;
+//      return state;
+      //update(recipients, {$push: [action.payload]}),
 //    case AMOUNT:
 //      return {
 //        ...state,
@@ -52,3 +57,4 @@ export default function emailTemplate(state = initialState, action) {
       return state;
   }
 }
+
