@@ -1,23 +1,35 @@
-import { Map } from 'immutable';
+// @flow
 
-const FROM = 'FROM';//Do you need this?
+const FROM = 'FROM'; // Do you need this?
 export const SUBJECT = 'SUBJECT';
 const ADD_RECIPIENTS = 'ADD_RECIPIENTS';
-const CONFIRM_AND_LOCK = 'CONFIRM_AND_LOCK';
+export const CONFIRM_AND_LOCK = 'CONFIRM_AND_LOCK';
 export const INVOICE_ID = 'INVOICE_ID';
+export const AMOUNT = 'AMOUNT';
 // BBC or CC? difference?
 
-export const updateTemplate = (inputType, invoiceId, payload) => ({
-  inputType,
-  invoiceId,
-  payload,
+type inputTypeType = string;
+type invoiceIdType = number;
+type payloadType = string | number;
+type recipientType = string;
+
+export const updateTemplate = (
+  inputType: inputTypeType,
+  invoiceId: invoiceIdType,
+  payload: payloadType
+) =>
+  ({
+    inputType,
+    invoiceId,
+    payload,
+  });
+
+export const confirmAndLock = (invoiceId: invoiceIdType) => ({
+  inputType: CONFIRM_AND_LOCK,
+  invoiceId
 });
 
-export const confirmAndLock = () => ({
-  inputType: CONFIRM_AND_LOCK
-});
-
-export const addRecipients = (recipient) => ({
+export const addRecipients = (recipient: recipientType) => ({
   inputType: ADD_RECIPIENTS,
   recipient,
 });

@@ -1,5 +1,5 @@
-import { Map, List, fromJS } from 'immutable';
-import { ADD_RECIPIENTS, CONFIRM_AND_LOCK, INVOICE_ID, SUBJECT } from '../../app/actions/emailTemplate';
+import { fromJS } from 'immutable';
+import { AMOUNT, ADD_RECIPIENTS, CONFIRM_AND_LOCK, INVOICE_ID, SUBJECT } from '../../app/actions/emailTemplate';
 
 // const initialInvoice = {
 //  amount: 0,
@@ -29,32 +29,22 @@ const initialState = fromJS({
   subject: '',
   invoices: {},
 });
-
+// Do you want to add in a second reducer??
 export default function emailTemplate(state = initialState, action) {
   switch (action.inputType) {
-    case INVOICE_ID:
-      return state.setIn(['invoices', action.invoiceId, 'invoiceId'], action.payload);
     case SUBJECT:
       return state.merge({ subject: action.payload });
     case ADD_RECIPIENTS:
       return state.merge({
         recipients: state.get('recipients').push(action.payload)
       });
-//      return state;
-//      return state;
-      //update(recipients, {$push: [action.payload]}),
-//    case AMOUNT:
-//      return {
-//        ...state,
-//        invoices[action.objectId].amount: action.payload),
-//      }
-//    case CONFIRM_AND_LOCK:
-//      return {
-//        ...state,
-//        invoices[action.objectId].confirmed: action.payload),//bool
-//      }
+    case INVOICE_ID:
+      return state.setIn(['invoices', action.invoiceId, 'invoiceId'], action.payload);
+    case AMOUNT:
+      return state.setIn(['invoices', action.invoiceId, 'amount'], action.payload);
+    case CONFIRM_AND_LOCK:
+      return state.setIn(['invoices', action.invoiceId, 'confirmAndLock'], true);
     default:
       return state;
   }
 }
-

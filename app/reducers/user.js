@@ -1,13 +1,21 @@
 // @flow
-import type { actionType } from '../utils/constants';
+import { fromJS } from 'immutable';
 import { AUTH_USER, UNAUTH_USER, FETCHING_USER, FETCHING_USER_FAILURE, FETCHING_USER_SUCCESS, REMOVE_FETCHING_USER } from '../actions/user';
-import { Map } from 'immutable';
+import type { userType } from '../actions/user';
+
+type actionType = {
+  +type: string,
+  +error?: string,
+  +uid?: string,
+  +user?: userType,
+  +timestamp?: string
+};
 
 type userStateType = {
   +isFetching: boolean,
   +error?: string,
-  +isAuthed?: boolean,
-  +authedId?: string
+  +isAuthed: boolean,
+  +authedId: string
 };
 
 type manageUserType = {
@@ -19,7 +27,7 @@ type manageUserType = {
   }
 };
 
-const initialUserState = Map({
+const initialUserState = fromJS({
   lastUpdated: 0,
   info: {
     name: '',
@@ -28,19 +36,16 @@ const initialUserState = Map({
   },
 });
 
-function manageUser(state: manageUserType = initialUserState, action: actionType) {
+function manageUser(state: manageUserType = initialUserState, action: actionType): stateType {
   switch (action.type) {
     case FETCHING_USER_SUCCESS:
-      return state.merge({
-        lastUpdate: Date.now(),
-        info: action.user,
-      });
+      return state.set('lastUpdated', Date.now()).set('info', action.user);
     default:
       return state;
   }
 }
 
-const initialState = Map({
+const initialState: userStateType = fromJS({
   isFetching: true,
   error: '',
   isAuthed: false,
@@ -74,11 +79,10 @@ export default function user(state: userStateType = initialState, action: action
           error: 'uh oh. no user found',
           isFetching: false,
         })
-        : state.merge({
-          error: '',
-          isFetching: false,
-          [action.uid]: manageUser(state[action.uid], action),
-        });
+        : state
+          .set('error', '')
+          .set('isFetching', false)
+          .set(action.uid, manageUser(state[action.uid], action));
     case REMOVE_FETCHING_USER:
       return state.merge({
         isFetching: false,

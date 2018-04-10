@@ -33,8 +33,18 @@ describe('emailTemplate reducer:', () => {
     expect(updateInvoice.get('recipients')).toEqual(List(['email@email.com']));
   });
 
-  it('handles inputType: AMOUNT')
-  it('handles inputeType: CONFIRM_AND_LOCK')
+  it('handles inputType: AMOUNT', () => {
+    const fakeAction = actions.updateTemplate(actions.AMOUNT, 1, 45.76);
+    const updateInvoice = emailTemplate(undefined, fakeAction);
+
+    expect(updateInvoice.getIn(['invoices', 1, 'amount'])).toEqual(45.76);
+  });
+  it('handles inputeType: CONFIRM_AND_LOCK', () => {
+    const fakeAction = actions.confirmAndLock(1);
+    const updateTemplate = emailTemplate(undefined, fakeAction);
+
+    expect(updateTemplate.getIn(['invoices', 1, 'confirmAndLock'])).toEqual(true);
+  });
   it('has a default that returns the state', () => {
     const fakeState = fromJS({
       from: 'john@email.com',

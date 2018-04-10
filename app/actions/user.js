@@ -14,7 +14,13 @@ export const FETCHING_USER_FAILURE = 'FETCHING_USER_FAILURE';
 export const FETCHING_USER_SUCCESS = 'FETCHING_USER_SUCCESS';
 export const REMOVE_FETCHING_USER = 'REMOVE_FETCHING_USER';
 
-export const authUser = (uid) => ({
+export type userType = {
+  name: string,
+  uid: string,
+  avatar: string
+};
+
+export const authUser = (uid: string) => ({
   type: AUTH_USER,
   uid,
 });
@@ -33,7 +39,8 @@ export const fetchingUserFailure = (error: string) => {
   };
 };
 
-export const fetchingUserSuccess = (uid: string, user: string) => ({
+export const fetchingUserSuccess = (uid: string,
+                                    user: userType) => ({
   type: FETCHING_USER_SUCCESS,
   uid,
   user,

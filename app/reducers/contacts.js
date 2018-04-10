@@ -1,5 +1,5 @@
 // @flow
-import { Map } from 'immutable';
+import { fromJS } from 'immutable';
 import { FETCHING_CONTACTS, FETCHING_CONTACTS_FAILURE, FETCHING_CONTACTS_SUCCESS, REMOVE_FETCHING_CONTACTS } from '../../app/actions/contacts';
 import type { actionType } from '../utils/constants';
 
@@ -8,7 +8,7 @@ type contactStateType = {
   +error: string
 };
 
-export const initialState = Map({
+export const initialState = fromJS({
   isFetching: false,
   error: '',
 });
