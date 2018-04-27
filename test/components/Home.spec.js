@@ -4,7 +4,8 @@ import { Home } from '../../app/components';
 
 describe('renders welcome/home text', () => {
   it('renders welcome/home text', () => {
-    let wrapper = shallow(<Home text='Hi'/>);
-    expect(wrapper).toMatchSnapshot();
+//    let wrapper = shallow(<Home text='Hi'/>);
+   console.log(shallow(<div>'hi'</div>))
+    expect(wrapper.prop('text')).toEqual('Hi');
      })
 })

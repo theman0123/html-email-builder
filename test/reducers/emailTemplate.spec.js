@@ -6,20 +6,20 @@ import * as actions from '../../app/actions/emailTemplate';
 
 describe('emailTemplate reducer:', () => {
   it('should have an initialState', () => {
-    expect(emailTemplate(undefined, {})).toEqual(fromJS({
+    expect(emailTemplate(undefined, {}).toJSON()).toEqual(fromJS({
       from: '',
       recipients: [undefined], // see Note**
       subject: '',
       invoices: {},
-    }));
+    }).toJSON());
   });
   it('handles inputType: INVOICE_ID', () => {
     const fakeAction = actions.updateTemplate(actions.INVOICE_ID, 1, 123456);
     const updateInvoice = emailTemplate(undefined, fakeAction);
 
-    expect(updateInvoice.getIn(['invoices', 1])).toEqual(Map({
+    expect(updateInvoice.getIn(['invoices', 1]).toJSON()).toEqual(fromJS({
       invoiceId: 123456
-    }));
+    }).toJSON());
   });
   it('handles inputType: SUBJECT', () => {
     const fakeAction = actions.updateTemplate(actions.SUBJECT, 1, 'Bill: Urgent');
@@ -30,7 +30,7 @@ describe('emailTemplate reducer:', () => {
   it('handles inputeType: ADD_RECIPIENTS', () => {
     const fakeAction = actions.updateTemplate(actions.ADD_RECIPIENTS, 1, 'email@email.com');
     const updateInvoice = emailTemplate(undefined, fakeAction);
-    expect(updateInvoice.get('recipients')).toEqual(List(['email@email.com']));
+    expect(updateInvoice.get('recipients').toJSON()).toEqual(List(['email@email.com']).toJSON());
   });
 
   it('handles inputType: AMOUNT', () => {
