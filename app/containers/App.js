@@ -1,14 +1,12 @@
-// @flow
-import * as React from 'react';
-import { Navigation } from 'components'
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { Navigation } from 'components';
+// for flow
+// type Props = {
+//   children: React.Node
+// };
 
-type Props = {
-  children: React.Node
-};
-
-export default class App extends React.Component<Props> {
-  props: Props;
-
+export default class App extends Component {
   render() {
     return (
       <div>
@@ -19,3 +17,8 @@ export default class App extends React.Component<Props> {
     );
   }
 }
+
+
+App.propTypes = {
+  children: PropTypes.node.isRequired,
+};

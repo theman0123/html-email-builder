@@ -1,11 +1,11 @@
-import { fromJS } from 'immutable';
+import { fromJS, Map } from 'immutable';
 import user from '../../app/reducers/user';
 import * as actions from '../../app/actions/user';
 
 describe('user reducer', () => {
   describe('should auth user', () => {
     it('should set initial state', () => {
-      expect(user(undefined, {})).toEqual(fromJS({
+      expect(user(undefined, {})).toEqual(Map({
         isFetching: true,
         error: '',
         isAuthed: false,
