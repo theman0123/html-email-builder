@@ -6,7 +6,7 @@ import IconGoogle from '../../assets/icon-google.js'
 
 type Props = {};
 
-export default class Home extends Component<Props> {
+export default class WelcomeText extends Component<Props> {
   props: Props;
 
   render() {
@@ -20,10 +20,10 @@ export default class Home extends Component<Props> {
   }
 }
 
-Home.propTypes = {
-  text: PropTypes.string.isRequired
-}
+WelcomeText.propTypes = {
+  text: PropTypes.string
+};
 
-Home.defaultProps = {
+WelcomeText.defaultProps = {
   text: 'Hi'
-}
+};

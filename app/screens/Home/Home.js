@@ -1,15 +1,15 @@
 // @flow
 import React, { Component } from 'react';
-import { Home } from 'components';
+import { WelcomeText } from 'components';
 
 type Props = {};
 
-export default class HomeContainer extends Component<Props> {
+export default class Home extends Component<Props> {
   props: Props;
 
   render() {
     return (
-      <Home />
+      <WelcomeText />
     );
   }
 }
