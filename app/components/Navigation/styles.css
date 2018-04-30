@@ -29,6 +29,18 @@
   background-color: #FA6FD0;
 }
 
+.button {
+  position: fixed;
+  width: 36px;
+  height: 30px;
+  right: 36px;
+  top: 36px;
+}
+
+.button svg {
+  fill: #4e4a46;
+}
+
 .itemList {
   font-size: 1.75em;
 }
