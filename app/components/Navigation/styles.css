@@ -1,35 +1,12 @@
-.navContainer {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: center;
-  background-color: #74E192;
-  width: 100vw;
-  height: 50px;
-  padding: 5px
-}
-
-.homeLink {
-  font-weight: 700;
-  font-size: 20px;
-  opacity: 100;
-}
-
-.homeLinkContainer {
-  border-bottom: .1em double white;
-  height: 100%;
-  display: flex;
-  align-items: center;
-}
-
-.mainMenu {
-  width: 10vw;
-  padding-top: 2em;
-  padding-left: 1em;
+/* General sidebar styles */
+.burgerMenu {
   background-color: #FA6FD0;
+  padding: 2.5em 1.5em 0;
+  font-size: 1.15em;
 }
 
-.button {
+/* Position and sizing of burger button */
+.burgerButton {
   position: fixed;
   width: 36px;
   height: 30px;
@@ -37,16 +14,29 @@
   top: 36px;
 }
 
-.button svg {
-  fill: #4e4a46;
+/* Color/shape of burger icon bars */
+.burgerBars {
+  background: #373a47;
+}
+
+/* Position and sizing of clickable cross button */
+.crossButton {
+  height: 24px;
+  width: 24px;
+}
+
+/* Color/shape of close button cross */
+.cross {
+  background: #bdc3c7;
+}
+
+.menuHeader {
+  font-size: 2em;
+  margin-bottom: 2em;
+  text-align: center;
 }
 
 .itemList {
   font-size: 1.75em;
 }
 
-.header {
-  font-size: 2em;
-  margin-bottom: 2em;
-  text-align: center;
-}

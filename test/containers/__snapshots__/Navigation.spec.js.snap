@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Navigation container Navigation icon should be visible Match previous visible styling 1`] = `
+Object {
+  "burgerBarClassName": undefined,
+  "burgerButtonClassName": undefined,
+  "children": Array [
+    <div
+      className={undefined}
+    >
+      Select an App
+    </div>,
+    <Link
+      replace={false}
+      to="/build-invoices"
+    >
+      Build Invoices
+    </Link>,
+    <a
+      className="menu-item--small"
+      href=""
+      onClick={[Function]}
+    >
+      Settings
+    </a>,
+  ],
+  "crossButtonClassName": undefined,
+  "crossClassName": undefined,
+  "itemListClassName": undefined,
+  "menuClassName": undefined,
+  "right": true,
+}
+`;
