@@ -7,20 +7,23 @@ import { decorator as reduxBurgerMenu } from 'redux-burger-menu/immutable';
 import { configureStore, history } from '../../app/store/configureStore';
 
 
-describe('Navigation container', () => {
+describe('NAVIGATION COMPONENT', () => {
   describe('Navigation icon should be visible', () => {
 //    const store = configureStore();
     
-    it('Match previous visible styling', () => {
-      const wrapper = shallow(<Navigation />);
+//    it('Match previous visible styling', () => {
+//      const wrapper = shallow(<Navigation />);
 //     figure out a way to test if component is visible -> look at testing css console.log(wrapper.find('.burgerButtonMenu'), styles.burgerButtonClassName)
-        expect(wrapper.props()).toMatchSnapshot();
-    });
+//      expect(wrapper.props()).toMatchSnapshot();
+//    });
   });
-  describe('store.burgerMenu represents bugerMenu component', () => {
+  describe(':::store.burgerMenu represents bugerMenu component:::', () => {
+    const store = configureStore();
+    const initialBM = store.getState().burgerMenu;
+    const initialLocation = store.getState().router.location;
+
     it('should toggle menu open', () => {
-      const store = configureStore();
-      const closed = store.getState().burgerMenu.get('isOpen');
+      const closed = initialBM.get('isOpen');
 
       store.dispatch(toggleMenu(true));
 
@@ -29,7 +32,14 @@ describe('Navigation container', () => {
 
       expect(closedThenOpen).toEqual(true);
     });
-    it('menu items are linked to appropriate routes');
+    it('should highlight Home route on startup', () => {
+      //check initial styling //how do you use a wrapper when the component is connected to state already?
+//      const wrapper = shallow(<Navigation />);
+//      
+//      console.log(wrapper);
+//      
+//      expect(wrapper.prop('selected')).toHaveLength(1);
+    });
   });
 });
 // should render menu, click on 'html-invoices' and see redux store change to that location //

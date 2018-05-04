@@ -40,3 +40,7 @@
   font-size: 1.75em;
 }
 
+.selected {
+  font-size: .5em;
+  opacity: .5;
+}
