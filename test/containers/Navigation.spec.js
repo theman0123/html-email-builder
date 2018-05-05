@@ -32,14 +32,18 @@ describe('NAVIGATION COMPONENT', () => {
 
       expect(closedThenOpen).toEqual(true);
     });
-    it('should highlight Home route on startup', () => {
-      //check initial styling //how do you use a wrapper when the component is connected to state already?
-//      const wrapper = shallow(<Navigation />);
-//      
-//      console.log(wrapper);
-//      
-//      expect(wrapper.prop('selected')).toHaveLength(1);
+    it('should display initial current route in menu as "Home"', () => {
+      const wrapper = shallow(<Navigation store={store}/>);
+      
+      expect(wrapper.prop('selected')).toEqual('Home');
     });
+    it('should change current route in menu when clicking/navigating to another route', () => {
+      //move wrapper outside block
+      //check wrapper.prop('selected')
+      //simulate click on build-invoices
+      //check 'selected' === build-invoices
+//      expect(wrapper.prop('selected')).toEqual('build invoices')
+    })
   });
 });
 // should render menu, click on 'html-invoices' and see redux store change to that location //

@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { decorator as reduxBurgerMenu } from 'redux-burger-menu/immutable';
 import { slide as Menu } from 'react-burger-menu';
 import { action as toggleMenu } from 'redux-burger-menu/immutable';
+import { formatCurrentPath } from '../../utils/formats';
 import * as styles from './styles.css';
 
 type Props = {};
@@ -61,12 +62,11 @@ class Navigation extends React.Component {
   }
 }
 
-const mapStateToProps = ({router}) => {
-  const location = router.location.pathname
-  const currentPath = location === '/' || location === null ? 'Home' : location;
-//  const formatCurrentPath = //remove slashes and add spaces for dashes
+const mapStateToProps = ({ router }) => {
+  const currentPath = router.location ?router.location.pathname : 'Home';
+
   return {
-    selected: currentPath
+    selected: formatCurrentPath(currentPath)
   }
 }
 
