@@ -1,6 +1,7 @@
 // @flow
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { decorator as reduxBurgerMenu } from 'redux-burger-menu/immutable';
 import { slide as Menu } from 'react-burger-menu';
@@ -14,16 +15,14 @@ class Navigation extends React.Component {
   constructor(props) {
     super(props);
     
-    this.onSelected = this.onSelected.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
   showSettings(event) {
     event.preventDefault();
   }
-  
-  onSelected(e) {
-    e.preventDefault();
-    
-    console.log('onSelected')
+
+  handleClick() {
+    return this.props.toggleMenu(false);
   }
 
   render() {
@@ -39,18 +38,22 @@ class Navigation extends React.Component {
         crossClassName={styles.cross}
         menuClassName={styles.burgerMenu}
         itemListClassName={styles.itemList}>
+
         <div className={styles.menuHeader}>
           {'Select an App'}
           <div className={styles.selected}>
             {selected}
           </div>
         </div>
-        <Link to="/">
+
+        <Link to="/" onClick={this.handleClick}>
           {'Home'}
         </Link>
-        <Link to="/build-invoices">
+
+        <Link to="/build-invoices" onClick={this.handleClick}>
           {'Build Invoices'}
         </Link>
+
         <a
           onClick={this.showSettings}
           className="menu-item--small"
@@ -70,4 +73,9 @@ const mapStateToProps = ({ router }) => {
   }
 }
 
-export default connect(mapStateToProps)(Navigation);
+const mapActionsToProps = (dispatch) =>
+  bindActionCreators({
+    toggleMenu
+  }, dispatch);
+
+export default connect(mapStateToProps, mapActionsToProps)(Navigation);

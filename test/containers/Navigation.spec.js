@@ -19,31 +19,34 @@ describe('NAVIGATION COMPONENT', () => {
   });
   describe(':::store.burgerMenu represents bugerMenu component:::', () => {
     const store = configureStore();
-    const initialBM = store.getState().burgerMenu;
-    const initialLocation = store.getState().router.location;
-
-    it('should toggle menu open', () => {
-      const closed = initialBM.get('isOpen');
-
-      store.dispatch(toggleMenu(true));
-
-      const open = store.getState().burgerMenu.get('isOpen');
-      const closedThenOpen = closed === false && open === true;
-
-      expect(closedThenOpen).toEqual(true);
+    const wrapper = shallow(<Navigation store={store}/>);
+    const initialBM = store.getState().burgerMenu.get('isOpen');
+//    const initialLocation = store.getState().router.location;
+    
+    it('should be connected to store', () => {
+      expect(initialBM).toMatchSnapshot();
     });
-    it('should display initial current route in menu as "Home"', () => {
-      const wrapper = shallow(<Navigation store={store}/>);
-      
+    it('should display current route from props.selected', () => {
       expect(wrapper.prop('selected')).toEqual('Home');
     });
-    it('should change current route in menu when clicking/navigating to another route', () => {
-      //move wrapper outside block
-      //check wrapper.prop('selected')
-      //simulate click on build-invoices
-      //check 'selected' === build-invoices
-//      expect(wrapper.prop('selected')).toEqual('build invoices')
-    })
+    it('should have handleClick', () => {
+      const handleClick = wrapper.dive().instance().handleClick;
+      const handleExists = handleClick !== "undefined";
+      expect(handleExists).toBe(true);
+    });
+    it('should close nav menu with onClick/handleClick', () => {
+      const closed = initialBM === false;
+      store.dispatch(toggleMenu(true));
+      
+      const open = store.getState().burgerMenu.get('isOpen');
+      wrapper.dive().find('Link').first().simulate('click');
+      const afterSelect = 'nothing';
+      console.log(closed, open, afterSelect, wrapper.dive().find('Link').first().simulate('click'));
+//      const openSelectLinkClose =  closed && open && afterSelect; 
+      //check store.menuOpen should be true
+      //click
+      //check store.menuOpen -> should be false
+      expect(wrapper.dive().find('Link').first().simulate('click'));
+    });
   });
 });
-// should render menu, click on 'html-invoices' and see redux store change to that location //

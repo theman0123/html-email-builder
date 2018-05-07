@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NAVIGATION COMPONENT :::store.burgerMenu represents bugerMenu component::: should be connected to store 1`] = `false`;
