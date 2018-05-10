@@ -4,7 +4,7 @@ const routes = [
     URL: '/'
   },
   {
-    name: 'build invoices',
+    name: 'Build Invoices',
     URL: '/build-invoices'
   }
 ];

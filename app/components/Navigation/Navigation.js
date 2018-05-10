@@ -12,26 +12,19 @@ import routes from './navigationRoutes';
 
 type Props = {};
 
-const buildNavRoutes = ({ routes }) => {
-  return routes.map((obj) => (
-    <Link to={obj.URL} onClick={this.handleClick}>
-      {obj.name}
-    </Link>
+const BuildNavRoutes = ({ navRoutes, closeMenu }) => {
+  return navRoutes.map((obj) => (
+    <div key={obj.name}>
+      <Link to={obj.URL} onClick={closeMenu}>
+        {obj.name}
+      </Link>
+    </div>
   ));
 };
 
 class Navigation extends React.Component {
   constructor(props) {
     super(props);
-
-    this.handleClick = this.handleClick.bind(this);
-  }
-  showSettings(event) {
-    event.preventDefault();
-  }
-
-  handleClick() {
-    return this.props.toggleMenu(false);
   }
 
   render() {
@@ -55,14 +48,16 @@ class Navigation extends React.Component {
           </div>
         </div>
 
-        <buildNavRoutes navRoutes={routes} />
+        <BuildNavRoutes
+          navRoutes={routes}
+          closeMenu={() => this.props.toggleMenu(false)} />
       </BurgerMenu>
     );
   }
 }
 
 const mapStateToProps = ({ router }) => {
-  const currentPath = router.location ?router.location.pathname : 'Home';
+  const currentPath = router.location ?router.location.pathname : 'home';
 
   return {
     selected: formatCurrentPath(currentPath)
