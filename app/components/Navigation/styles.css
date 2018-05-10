@@ -32,7 +32,7 @@
 
 .menuHeader {
   font-size: 2em;
-  margin-bottom: 2em;
+  margin-bottom: 1em;
   text-align: center;
 }
 
@@ -43,4 +43,10 @@
 .selected {
   font-size: .5em;
   opacity: .5;
+}
+
+.divider {
+  border: 0;
+  height: 1px;
+  background: #333;
 }

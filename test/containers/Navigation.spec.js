@@ -31,7 +31,7 @@ describe('NAVIGATION COMPONENT', () => {
     });
     it('should have handleClick', () => {
       const handleClick = wrapper.dive().instance().handleClick;
-      const handleExists = handleClick !== "undefined";
+      const handleExists = handleClick === 'function';
       expect(handleExists).toBe(true);
     });
     it('should close nav menu with onClick/handleClick', () => {
@@ -46,7 +46,7 @@ describe('NAVIGATION COMPONENT', () => {
       //check store.menuOpen should be true
       //click
       //check store.menuOpen -> should be false
-      expect(wrapper.dive().find('Link').first().simulate('click'));
+      expect(wrapper.dive().find('Link').first().simulate('click')).toBe(false);
     });
   });
 });

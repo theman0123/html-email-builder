@@ -8,13 +8,22 @@ import { slide as Menu } from 'react-burger-menu';
 import { action as toggleMenu } from 'redux-burger-menu/immutable';
 import { formatCurrentPath } from '../../utils/formats';
 import * as styles from './styles.css';
+import routes from './navigationRoutes';
 
 type Props = {};
+
+const buildNavRoutes = ({ routes }) => {
+  return routes.map((obj) => (
+    <Link to={obj.URL} onClick={this.handleClick}>
+      {obj.name}
+    </Link>
+  ));
+};
 
 class Navigation extends React.Component {
   constructor(props) {
     super(props);
-    
+
     this.handleClick = this.handleClick.bind(this);
   }
   showSettings(event) {
@@ -46,20 +55,7 @@ class Navigation extends React.Component {
           </div>
         </div>
 
-        <Link to="/" onClick={this.handleClick}>
-          {'Home'}
-        </Link>
-
-        <Link to="/build-invoices" onClick={this.handleClick}>
-          {'Build Invoices'}
-        </Link>
-
-        <a
-          onClick={this.showSettings}
-          className="menu-item--small"
-          href="">
-          {'Settings'}
-        </a>
+        <buildNavRoutes navRoutes={routes} />
       </BurgerMenu>
     );
   }
