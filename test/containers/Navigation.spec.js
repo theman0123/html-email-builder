@@ -4,41 +4,28 @@ import { Navigation, BuildNavRoutes } from '../../app/components';
 import { routes } from '../../app/components/Navigation/navigationRoutes';
 import { action as toggleMenu } from 'redux-burger-menu/immutable';
 
-describe('NAVIGATION', () => {
+describe('::NAVIGATION::', () => {
   let wrapper;
-  let buildWrapper;
-  let initialBM;
-  let props;
+  let store;
   beforeEach(() => {
-    const store = configureStore();
+    store = configureStore();
     wrapper = shallow(<Navigation store={store}/>);
-//    buildWrapper = shallow(<BuildNavRoutes />);
-    
-    initialBM = store.getState().burgerMenu.get('isOpen');
-    
-//    props = {
-//      routes: [{
-//        name: 'example route',
-//        URL: '/example-route'
-//      }];
-//    }
   });
   
-  it('should be connected to store', () => {
-    expect(initialBM).toMatchSnapshot();
+  describe('it should be connected to store', () => {
+    it('should be closed initially', () => {
+      const initialBM = store.getState().burgerMenu.get('isOpen');
+      expect(initialBM).toMatchSnapshot();
+    });
   });
   
   it('should display landing route from props.selected', () => {
     expect(wrapper.prop('selected')).toEqual('home');
   });
-  describe('BuildNavRoutes receives props for routes and renders children', () => {
-    beforeEach(() => {
-      
-    });
+  describe('BuildNavRoutes', () => {
     it('renders children', () => {
-//      test that it renders children //
-      console.log(wrapper.dive().find('BuildNavRoutes').children())
-//      expect(wrapper.props())
-    })
-  })
+      expect(wrapper.dive().children().last().props())
+        .toMatchSnapshot();
+    });
+  });
 });

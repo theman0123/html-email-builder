@@ -1,5 +1,6 @@
 // @flow
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
@@ -20,6 +21,14 @@ const BuildNavRoutes = ({ navRoutes, closeMenu }) => {
       </Link>
     </div>
   ));
+};
+
+BuildNavRoutes.propTypes = {
+  navRoutes: PropTypes.arrayOf(PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    URL: PropTypes.string.isRequired
+  })).isRequired,
+  closeMenu: PropTypes.func.isRequired
 };
 
 class Navigation extends React.Component {
@@ -54,6 +63,11 @@ class Navigation extends React.Component {
       </BurgerMenu>
     );
   }
+}
+
+Navigation.propTypes = {
+  selected: PropTypes.string.isRequired,
+  toggleMenu: PropTypes.func.isRequired
 }
 
 const mapStateToProps = ({ router }) => {

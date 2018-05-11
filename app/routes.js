@@ -2,13 +2,13 @@
 import React from 'react';
 import { Switch, Route } from 'react-router';
 import App from './screens/App';
-import { Home, LandingContainer } from 'screens';
+import { Home, BuildInvoices } from 'screens';
 
 export default () => (
   <App>
     <Switch>
-      <Route path="/build-invoices" component={LandingContainer} />
-      <Route path="/" component={Home} />
+      <Route exact path="/" component={Home} />
+      <Route path="/build-invoices" component={BuildInvoices} />
     </Switch>
   </App>
 );

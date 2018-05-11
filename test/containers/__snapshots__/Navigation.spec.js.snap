@@ -1,3 +1,19 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`NAVIGATION should be connected to store 1`] = `false`;
+exports[`::NAVIGATION:: BuildNavRoutes renders children 1`] = `
+Object {
+  "closeMenu": [Function],
+  "navRoutes": Array [
+    Object {
+      "URL": "/",
+      "name": "Home",
+    },
+    Object {
+      "URL": "/build-invoices",
+      "name": "Build Invoices",
+    },
+  ],
+}
+`;
+
+exports[`::NAVIGATION:: it should be connected to store should be closed initially 1`] = `false`;

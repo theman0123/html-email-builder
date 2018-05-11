@@ -1,3 +1,4 @@
 export WelcomeText from './WelcomeText/WelcomeText';
 export Landing from './Landing/Landing';
-export Navigation, { BuildNavRoutes } from './Navigation/Navigation';
+export Navigation from './Navigation/Navigation';
+export GoogleAuth from './GoogleAuth/GoogleAuth';
