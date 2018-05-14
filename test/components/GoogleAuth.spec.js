@@ -1,4 +1,5 @@
 import React from 'react';
+import { GoogleAuth } from '../../app/components';
 
 describe('::GoogleAuth::', () => {
   it('props should have a link to google');
